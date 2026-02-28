@@ -728,4 +728,67 @@
       justify-content: center;
       cursor: none;
       opacity: 0;
-      pointer-ev
+            pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 1001;
+    }
+    .back-top.show { opacity: 1; pointer-events: all; }
+    .back-top:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+      .about-grid, .services-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-stats { position: static; transform: none; flex-direction: row; margin-top: 40px; }
+      .project-item { grid-template-columns: 1fr auto; }
+      .project-num, .project-tags { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+
+  <nav id="navbar">
+    <div class="nav-logo">DavidTri</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Available for Projects</div>
+      <h1 class="hero-name">DAVID<span>TRIATMAJA</span></h1>
+      <p class="hero-desc">Independent Designer & Developer focusing on digital experiences that blend aesthetic with functionality.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View Works</a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Script untuk Custom Cursor
+    const cursor = document.querySelector('.cursor');
+    const cursorRing = document.querySelector('.cursor-ring');
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.transform = `translate(${e.clientX - 6}px, ${e.clientY - 6}px)`;
+      cursorRing.style.transform = `translate(${e.clientX - 20}px, ${e.clientY - 20}px)`;
+    });
+
+    // Script untuk Navbar saat Scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+  </script>
+</body>
+</html>
+
